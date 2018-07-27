@@ -25,7 +25,7 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
       GEMFILE
     end
 
-    raise(ENV['AWS_ACCESS_KEY_ID']+ENV['AWS_SECRET_ACCESS_KEY']+ENV['AWS_REGION']+ENV['AWS_BUCKET'])
+    raise(ENV['AWS_ACCESS_KEY_ID']+ENV['AWS_SECRET_ACCESS_KEY'])
 
   File.open('config/storage.yml', 'a') { |f|
     f << "<% aws_access_key_id = ENV['AWS_ACCESS_KEY_ID'] %>\n"
