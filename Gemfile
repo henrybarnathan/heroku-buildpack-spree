@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem "aws-sdk-s3"
+
 group :development, :test do
   gem "heroku_hatchet"
   gem "rspec-core"
