@@ -25,6 +25,19 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
       GEMFILE
     end
 
+  File.open('config/storage.yml', 'a') { |f|
+    f << "<% aws_access_key_id = ENV['AWS_ACCESS_KEY_ID'] %>\n"
+    f << "<% aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY'] %>\n"
+    f << "<% aws_region = ENV['AWS_REGION'] %>\n"
+    f << "<% aws_bucket = ENV['AWS_BUCKET'] %>\n"
+    f << "amazon:\n"
+    f << "  service: S3\n"
+    f << "  access_key_id: <% aws_access_key_id %>\n"
+    f << "  secret_access_key: <% aws_secret_access_key %>\n"
+    f << "  region: <% aws_region %>\n"
+    f << "  bucket: <% aws_bucket %>\n"
+  }
+
  File.write("config/initializers/devise.rb", <<RUBY)
 Devise.secret_key = #{SecureRandom.hex(50).inspect }
 RUBY
